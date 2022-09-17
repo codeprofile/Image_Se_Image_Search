@@ -1,6 +1,4 @@
-FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
+FROM python:3.8
 LABEL author="Laxmi Sarki"
 WORKDIR /app
 COPY ./requirements.txt requirements.txt
