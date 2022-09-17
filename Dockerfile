@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3
 LABEL author="Laxmi Sarki"
 WORKDIR /app
 COPY ./requirements.txt requirements.txt
