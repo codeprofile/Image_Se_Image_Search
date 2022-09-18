@@ -26,3 +26,6 @@
         <li> pip install -r requirements.txt </li>
         <li>  flask run </li>
     </ul>
+
+
+<b><i>Inspiration Taken From :</i></b><ul><li>https://towardsdatascience.com/build-an-image-search-engine-using-python-ad181e76441b</li></ul>
