@@ -31,7 +31,7 @@ def index():
         fe = FeatureExtractor()
         query = fe.extract(img)
         dists = np.linalg.norm(features - query, axis=1)  # L2 distances to features
-        ids = np.argsort(dists)[:5]  # Top 5 results
+        ids = np.argsort(dists)[:20]  # Top 10 results
         scores = [(dists[id], img_paths[id]) for id in ids]
         return render_template('index.html',
                                query_path=uploaded_img_path,
