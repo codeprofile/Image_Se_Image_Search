@@ -1,13 +1,12 @@
 import os
 from PIL import Image
-from flask import Flask, flash, request, redirect, url_for, render_template
+from flask import Flask, request, render_template
 from datetime import datetime
 from Image_feature_extraction import FeatureExtractor
 from pathlib import Path
 import numpy as np
 
 app = Flask(__name__)
-
 
 # Read image features
 fe = FeatureExtractor()
@@ -17,7 +16,6 @@ for feature_path in Path("./static/feature").glob("*.npy"):
     features.append(np.load(feature_path))
     img_paths.append(Path("./static/dataset") / (feature_path.stem + ".jpg"))
 features = np.array(features)
-
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -33,12 +31,12 @@ def index():
         fe = FeatureExtractor()
         query = fe.extract(img)
         dists = np.linalg.norm(features - query, axis=1)  # L2 distances to features
-        ids = np.argsort(dists)[:30]  # Top 30 results
+        ids = np.argsort(dists)[:5]  # Top 5 results
         scores = [(dists[id], img_paths[id]) for id in ids]
         return render_template('index.html',
                                query_path=uploaded_img_path,
-                               context = uploaded_img_path,
-                               scores = scores
+                               context=uploaded_img_path,
+                               scores=scores
                                )
     if request.method == 'GET':
         return render_template('index.html')

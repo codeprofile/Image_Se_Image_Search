@@ -2,8 +2,6 @@
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.models import Model
-from pathlib import Path
-from PIL import Image
 import numpy as np
 
 
